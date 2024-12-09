@@ -1,0 +1,18 @@
+<form id="notification-form">
+    <textarea id="message" placeholder="Enter notification message"></textarea>
+    <input id="recipients" placeholder="Enter recipient emails (comma-separated)" />
+    <button type="submit">Send Notification</button>
+  </form>
+  <script>
+    document.getElementById("notification-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const message = document.getElementById("message").value;
+      const recipients = document.getElementById("recipients").value.split(",");
+  
+      fetch("/notifications/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message, recipients }),
+      }).then((res) => res.json());
+    });
+  </script>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Dashboard</title>
+</head>
+<body class="bg-gray-100">
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <aside class="bg-blue-600 w-64 text-white p-6 flex flex-col">
+      <h2 class="text-2xl font-bold mb-6">Admin Dashboard</h2>
+      <nav class="flex-1">
+        <a
+          href="#"
+          class="block py-2 px-4 rounded hover:bg-blue-700"
+          >User Management</a
+        >
+        <a
+          href="#"
+          class="block py-2 px-4 rounded hover:bg-blue-700"
+          >Reports</a
+        >
+        <a
+          href="#"
+          class="block py-2 px-4 rounded hover:bg-blue-700"
+          >Notifications</a
+        >
+        <a
+          href="#"
+          class="block py-2 px-4 rounded hover:bg-blue-700"
+          >Settings</a
+        >
+      </nav>
+      <a
+        href="/logout"
+        class="mt-6 block py-2 px-4 bg-red-500 text-center rounded hover:bg-red-600"
+        >Logout</a
+      >
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6">
+      <h1 class="text-3xl font-bold mb-4">Welcome, Admin</h1>
+      <div class="grid grid-cols-3 gap-6">
+        <div class="bg-white p-4 shadow rounded">
+          <h2 class="text-xl font-bold mb-2">Sales Report</h2>
+          <p class="text-gray-600">Generate detailed sales reports here.</p>
+        </div>
+        <div class="bg-white p-4 shadow rounded">
+          <h2 class="text-xl font-bold mb-2">User Management</h2>
+          <p class="text-gray-600">Add, update, or delete accounts.</p>
+        </div>
+        <div class="bg-white p-4 shadow rounded">
+          <h2 class="text-xl font-bold mb-2">Notifications</h2>
+          <p class="text-gray-600">Send bulk notifications to users.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<div class="p-6 max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-4">Sales Report</h1>
+    <table class="min-w-full bg-white border border-gray-200 shadow rounded">
+      <thead>
+        <tr>
+          <th class="py-2 px-4 border-b">Product ID</th>
+          <th class="py-2 px-4 border-b">Total Sales</th>
+        </tr>
+      </thead>
+      <tbody id="report-table">
+        <!-- Reports will be dynamically added here -->
+      </tbody>
+    </table>
+    <script>
+      // Fetch sales report
+      fetch("/reports/sales")
+        .then((response) => response.json())
+        .then((reports) => {
+          const table = document.getElementById("report-table");
+          reports.forEach((report) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td class="py-2 px-4 border-b">${report._id}</td>
+              <td class="py-2 px-4 border-b">${report.totalSales}</td>
+            `;
+            table.appendChild(row);
+          });
+        });
+    </script>
+  </div>

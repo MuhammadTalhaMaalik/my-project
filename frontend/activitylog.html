@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Activity Logs</title>
+</head>
+<body class="bg-gray-100">
+  <div class="p-6 max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-4">Activity Logs</h1>
+    <table class="min-w-full bg-white border border-gray-200 shadow rounded">
+      <thead>
+        <tr>
+          <th class="py-2 px-4 border-b">User</th>
+          <th class="py-2 px-4 border-b">Action</th>
+          <th class="py-2 px-4 border-b">Timestamp</th>
+        </tr>
+      </thead>
+      <tbody id="log-table">
+        <!-- Logs will be dynamically added here -->
+      </tbody>
+    </table>
+  </div>
+  <script>
+    // Fetch activity logs
+    fetch("/activity")
+      .then((response) => response.json())
+      .then((logs) => {
+        const table = document.getElementById("log-table");
+        logs.forEach((log) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td class="py-2 px-4 border-b">${log.userId.name} (${log.userId.email})</td>
+            <td class="py-2 px-4 border-b">${log.action}</td>
+            <td class="py-2 px-4 border-b">${new Date(log.timestamp).toLocaleString()}</td>
+          `;
+          table.appendChild(row);
+        });
+      });
+  </script>
+</body>
+</html>
